@@ -28,7 +28,7 @@ app.get("/styles", function(req, res) {
     res.sendFile(path.join(__dirname, "/public/index.css"));
 });
 
-app.get("/js", (req, res)=> {
+app.get("/js", (req, res) => {
     rollbar.info("Served JS");
     res.sendFile(path.join(__dirname, "/public/index.js"))
 });
@@ -46,6 +46,7 @@ app.get('/api/robots', (req, res) => {
 
 app.get('/api/robots/five', (req, res) => {
     try {
+        rollbar.info('Someone got the five robots')
         let shuffled = shuffleArray(bots)
         let choices = shuffled.slice(0, 5)
         let compDuo = shuffled.slice(6, 8)
